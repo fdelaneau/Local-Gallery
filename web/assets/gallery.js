@@ -128,7 +128,10 @@ const navigation = function (list, cols) {
 
     // close slideshow
     else if ( e.target.nodeName == 'BUTTON' ) {
-      hideSlideshow();
+      if (e.target.classList.contains('close'))
+        hideSlideshow();
+      else
+        toggleFullScreen();
     }
 
     // show next image
@@ -230,14 +233,16 @@ const createSlideshowOverlay = function (list) {
   // Add close button
   const closeBtn = document.createElement("button");
   closeBtn.innerHTML = 'Close <span class="shortcut">ESC</span>';
-  closeBtn.className = "btn";
+  closeBtn.className = "btn close";
   slideshow.appendChild(closeBtn);
 
   // Add fullscreen button
   const fullscreenBtn = document.createElement("button");
   fullscreenBtn.innerHTML = 'Fullscreen <span class="shortcut">F</span>';
-  fullscreenBtn.className = "btn";
+  fullscreenBtn.className = "btn fullscreen";
   slideshow.appendChild(fullscreenBtn);
+
+
 
   // By default hide the slideshow
   slideshow.dataset.active = false;
