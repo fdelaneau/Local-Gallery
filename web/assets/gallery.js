@@ -418,7 +418,7 @@ const deleteMarkedImages = function() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch('https://gallery.ddev.site/delete.php', {
+      const res = await fetch('/delete.php', {
         method: 'POST',
         body: data
       });
