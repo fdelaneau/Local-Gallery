@@ -1,0 +1,19 @@
+{% extends "_layout.twig" %}
+
+{% set pageTitle = 'Galleries' %}
+
+{% block content %}
+    <ul class="albums" id="albums" role="list">
+        {% for gallery in galleries %}
+            <li>
+                <a href="/gallery.php?id={{ gallery.name }}">
+                    <img src="{{ gallery.thumbnail }}" loading="lazy">
+                    <div class="caption">
+                        <div class="title">{{ gallery.name }}</div>
+                        <div class="files"><span>files</span> {{ gallery.filesCount }}</div>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
