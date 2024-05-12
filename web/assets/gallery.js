@@ -447,15 +447,18 @@ const removeDeletedImages = function(pathsArray) {
 
     // Get item parent li
     let id = 'gallery-' + gallery + '_' + filename;
+
+    // Remove item from localstorage
+    localStorage.removeItem(id);
+
     let image = document.getElementById(id);
     let li = image.parentElement;
 
+    // If the current image is removed, select another image
     if ( currentImage.id == id ) {
       let newLi = li.nextElementSibling;
-      console.log(newLi);
       newLi = newLi ? li.nextElementSibling : li.previousElementSibling;
       currentImage = newLi.querySelector('a');
-
     }
 
     // Remove li from DOM with animation
