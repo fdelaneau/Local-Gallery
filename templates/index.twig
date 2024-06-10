@@ -1,9 +1,10 @@
 {% extends "_layout.twig" %}
 
 {% set pageTitle = 'Galleries' %}
+{% set pageType = 'albums' %}
 
 {% block content %}
-    <ul class="albums" id="albums" role="list">
+    <ul class="list albums" id="albums" role="list">
         {% for gallery in galleries %}
             <li>
                 <a href="/gallery.php?id={{ gallery.name }}">

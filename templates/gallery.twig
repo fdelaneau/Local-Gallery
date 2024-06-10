@@ -1,6 +1,7 @@
 {% extends "_layout.twig" %}
 
 {% set pageTitle = 'Gallery ' ~ gallery.name %}
+{% set pageType = 'gallery' %}
 
 {% block content %}
     <header>
@@ -9,10 +10,10 @@
 		</div>
 		<div>
 			<button class="btn" id="mark-file">Mark file <span class="shortcut">D</span></button>
-			<button class="btn" id="show-marked">Show marked files list <span class="shortcut">⌘D</span></button>
+			<button class="btn" id="show-marked">Show marked files <span class="shortcut">⌘D</span></button>
 		</div>
 	</header>
-	<ul class="gallery" id="gallery" role="list">
+	<ul class="list gallery" id="gallery" role="list">
 		{% for image in images %}
 			<li>
 				<a id="{{ image.id }}" href="#">

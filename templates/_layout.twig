@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ pageTitle }}</title>
-    <link rel="stylesheet" href="/assets/theme.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <meta name="description" content="">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
 </head>
-<body>
+<body class="{{ pageType }}">
     {% block content %}
         <p>Your content here</p>
     {% endblock %}
 
-    <script src="/assets/gallery.js"></script>
+    <script src="/assets/js/gallery.min.js"></script>
 </body>
 </html>

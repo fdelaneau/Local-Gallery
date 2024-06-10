@@ -1,0 +1,51 @@
+header
+	position: fixed
+	top: 0
+	z-index: 10
+
+	display: flex
+	gap: 1rem
+	width: 100%
+	padding: 1rem
+	justify-content: space-between
+
+	background-color: hsl(0 0% 13% / .5)
+	backdrop-filter: blur(10px)
+
+	& > *
+		display: flex
+		gap: 1rem
+
+.btn, .btn:visited
+	display: inline-flex
+	justify-content: center
+	align-items: center
+
+	padding: 1rem .9rem .9rem
+
+	color: #222
+	font-size: .75rem
+	line-height: 1
+	text-decoration: none
+	text-transform: uppercase
+
+	background-color: #999
+	border: none
+	border-radius: .5rem
+	cursor: pointer
+
+	&:hover, &:focus-visible
+		background-color: #ddd
+
+	.shortcut
+		display: none
+
+
+	@media (pointer: fine)
+		padding: .6rem .7rem .5rem
+
+		.shortcut
+			display: inline-block
+			margin-inline-start: 1rem
+			color: #666
+			letter-spacing: 0.25em

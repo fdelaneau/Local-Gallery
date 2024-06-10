@@ -236,13 +236,17 @@ const createSlideshowOverlay = function (list) {
   closeBtn.className = "btn close";
   slideshow.appendChild(closeBtn);
 
-  // Add fullscreen button
-  const fullscreenBtn = document.createElement("button");
-  fullscreenBtn.innerHTML = 'Fullscreen <span class="shortcut">F</span>';
-  fullscreenBtn.className = "btn fullscreen";
-  slideshow.appendChild(fullscreenBtn);
+  // Add mark file button
+  const markFileBtn = document.createElement("button");
+  markFileBtn.innerHTML = 'Mark file <span class="shortcut">D</span>';
+  markFileBtn.className = "btn";
+  markFileBtn.dataset.jsTrigger = "mark-file";
+  slideshow.appendChild(markFileBtn);
 
-
+  // Add fullscreen button only if the device supports it
+  if (document.fullscreenEnabled) {
+    createFullScreenBtn();
+  }
 
   // By default hide the slideshow
   slideshow.dataset.active = false;
@@ -271,6 +275,13 @@ const hideSlideshow = function () {
 // ------------------------
 // Fullscreen
 // ------------------------
+
+const createFullScreenBtn = function() {
+  const fullscreenBtn = document.createElement("button");
+  fullscreenBtn.innerHTML = 'Fullscreen <span class="shortcut">F</span>';
+  fullscreenBtn.className = "btn fullscreen";
+  slideshow.appendChild(fullscreenBtn);
+}
 
 const toggleFullScreen = function() {
   if (!document.fullscreenElement && isSlideshowActive) {
