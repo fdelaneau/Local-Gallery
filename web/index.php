@@ -2,21 +2,27 @@
 
 require_once dirname(__DIR__) . '/bootstrap.php';
 
-// Create a list of all galleries
-foreach ( glob('images/*', GLOB_ONLYDIR) as $key => $folder ) {
-	$imagesDir = 'images/';
+$galleriesDir = 'images/';
+$galleriesList = glob('images/[!@]*', GLOB_ONLYDIR);
 
+// Create a list of all galleries
+foreach ( $galleriesList as $key => $folder ) {
 	// Get gallery name
-	$galleryName = str_replace($imagesDir, '', $folder);
+	$galleryName = str_replace($galleriesDir, '', $folder);
+
+	// Get all files
+	$galleryDir = 'images/'.$galleryName;
+	$imagesList = glob($galleryDir."/*.{jpg,jpeg,gif,png,bmp,webp,mov,mp4}", GLOB_BRACE);
+
+	// Get the file count
+	$filesCount = count($imagesList);
 
 	// Get a preview image
-	$files = preg_grep('/^([^.])/', scandir($imagesDir .'/'. $galleryName));
-	$filesCount = count($files);
-	$firstFile = rawurlencode($imagesDir . $galleryName .'/'. $files[2]);
+	$firstImage = current($imagesList);
 
 	$galleries[$key]['name'] = $galleryName;
-	$galleries[$key]['thumbnail'] = $firstFile;
 	$galleries[$key]['filesCount'] = $filesCount;
+	$galleries[$key]['thumbnail'] = $firstImage;
 }
 
 // Render our view
